@@ -7,10 +7,8 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jallen.CMAppException;
+import com.jallen.model.CMAppException;
 import com.jallen.model.CityResponse;
 import com.jallen.model.MetricContents;
 import com.jallen.model.RankResponse;

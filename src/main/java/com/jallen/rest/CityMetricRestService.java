@@ -2,7 +2,6 @@ package com.jallen.rest;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Logger;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -15,8 +14,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jallen.CMAppException;
 import com.jallen.impl.IdValidationService;
+import com.jallen.model.CMAppException;
 import com.jallen.model.CityResponse;
 import com.jallen.model.RankRequest;
 import com.jallen.model.RankResponse;

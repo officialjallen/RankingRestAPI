@@ -1,6 +1,6 @@
 package com.jallen.impl;
 
-import com.jallen.CMAppException;
+import com.jallen.model.CMAppException;
 import com.jallen.model.CityResponse;
 
 public class IdValidationService {

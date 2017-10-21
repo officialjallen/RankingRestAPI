@@ -1,4 +1,4 @@
-package com.jallen;
+package com.jallen.model;
 
 public class CMAppException extends Exception {
 
