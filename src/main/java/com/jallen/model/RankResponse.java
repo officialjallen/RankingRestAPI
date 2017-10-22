@@ -1,19 +1,20 @@
 package com.jallen.model;
 
+import java.util.Comparator;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class RankResponse extends CityResponse{
+public class RankResponse extends CityResponse {
 	@JsonInclude(JsonInclude.Include.NON_EMPTY)
 	@JsonProperty("overall_score")
-	private String calculatedScore;
+	private float calculatedScore;
 
-	public String getCalculatedScore() {
+	public float getCalculatedScore() {
 		return calculatedScore;
 	}
 
-	public void setCalculatedScore(String calculatedScore) {
+	public void setCalculatedScore(float calculatedScore) {
 		this.calculatedScore = calculatedScore;
 	}
-
 }
