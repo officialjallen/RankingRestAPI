@@ -1,7 +1,5 @@
 package com.jallen.model;
 
-import java.util.Comparator;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

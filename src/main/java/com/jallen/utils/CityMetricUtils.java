@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -79,10 +78,9 @@ public class CityMetricUtils {
 	}
 	
 	public static void calculateOverallScore(RankRequest weights, RankResponse response) {
-		response.setCalculatedScore((weights.getMetricContents().getGreenSpace() * response.getMetricContents().getGreenSpace()) +
+		response.setCalculatedScore((float) (Math.round(((weights.getMetricContents().getGreenSpace() * response.getMetricContents().getGreenSpace()) +
 				(weights.getMetricContents().getJobGrowth() * response.getMetricContents().getJobGrowth()) +
 				(weights.getMetricContents().getWalkability() * response.getMetricContents().getWalkability()) +
-				(weights.getMetricContents().getTaxes() * response.getMetricContents().getTaxes()));
+				(weights.getMetricContents().getTaxes() * response.getMetricContents().getTaxes())) * 100.0) / 100.0));
 	}
-	
 }
