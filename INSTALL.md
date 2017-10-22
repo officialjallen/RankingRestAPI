@@ -17,12 +17,12 @@
 2. Installation instructions can be found here https://maven.apache.org/install.html
 3. Once complete, run "mvn -version" to ensure you have 3.5.0 installed like below
 
-Apache Maven 3.5.0 (ff8f5e7444045639af65f6095c62210b5713f426; 2017-04-03T13:39:06-06:00)
-Maven home: /Applications/apache-maven-3.5.0
-Java version: 1.8.0_151, vendor: Oracle Corporation
-Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/jre
-Default locale: en_US, platform encoding: UTF-8
-OS name: "mac os x", version: "10.12.6", arch: "x86_64", family: "mac"
+Apache Maven 3.5.0 (ff8f5e7444045639af65f6095c62210b5713f426; 2017-04-03T13:39:06-06:00)  
+Maven home: /Applications/apache-maven-3.5.0  
+Java version: 1.8.0_151, vendor: Oracle Corporation  
+Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/jre  
+Default locale: en_US, platform encoding: UTF-8  
+OS name: "mac os x", version: "10.12.6", arch: "x86_64", family: "mac"  
 
 ---
 
@@ -34,14 +34,12 @@ OS name: "mac os x", version: "10.12.6", arch: "x86_64", family: "mac"
 
 ---
 
-## uild and Run
+## Build and Run
 1. Clone project to a directory https://github.com/officialjallen/emsiapp
 2. Enter the "emsiapp" directory
 3. Run "mvn clean install"
 4. Project should Build
 5. Enter the "target" directory
-6. Copy the "CityRankApp.war" file
-7. Back in the "apache-tomcat-8.5.23" folder, enter webapps
-8. Paste the "CityRankApp.war"
-9. In the command line in "apache-tomcat-8.5.23/bin" run "./startup.sh"
-10. Tomcat should startup, and the service should be running on http://localhost:8080
+6. Copy the "CityRankApp.war" file to the "apache-tomcat-8.5.23/webapps" folder
+7. In the command line in "apache-tomcat-8.5.23/bin" run "./startup.sh"
+8. Tomcat should startup, and the service should be running on http://localhost:8080
