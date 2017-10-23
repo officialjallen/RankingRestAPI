@@ -51,14 +51,14 @@ I used Postman to send these
 http://localhost:8080/CityRankApp/city/4
 
 ### Get Ranked List of Cities - POST Request
-http://localhost:8080/CityRankApp/rank
-Requires a JSON request like below:
-{
-	"weights": {
-		"walkability": 4,
-		"job_growth": 1.0,
-		"green_space": 2.5,
-		"taxes": 0.5
-	}
-}
+http://localhost:8080/CityRankApp/rank  
+Requires a JSON request like below:  
+{  
+	"weights": {  
+		"walkability": 4,  
+		"job_growth": 1.0,  
+		"green_space": 2.5,  
+		"taxes": 0.5  
+	}  
+}  
 as well as a header with Key: "Content-Type" and Value: "application/json"
