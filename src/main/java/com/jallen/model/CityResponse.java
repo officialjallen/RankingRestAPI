@@ -3,6 +3,10 @@ package com.jallen.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Object to hold common response data
+ * @author Jonathan Allen
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CityResponse {
 	@JsonProperty("name")
@@ -13,7 +17,6 @@ public class CityResponse {
 	@JsonInclude(JsonInclude.Include.NON_EMPTY)
 	@JsonProperty("scores")
 	private MetricContents metricContents;
-	
 	private String Error;
 	
 	public String getCityName() {

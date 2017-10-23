@@ -3,6 +3,10 @@ package com.jallen.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Object to hold the common metric data
+ * @author Jonathan Allen
+ */
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MetricContents {
 	@JsonProperty("walkability")

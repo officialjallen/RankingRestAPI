@@ -24,18 +24,28 @@ import com.jallen.model.RankRequest;
 import com.jallen.model.RankResponse;
 import com.jallen.utils.CityMetricUtils;
 
+/**
+ * Restful City Rank Service
+ * @author Jonathan Allen
+ */
 @Path("/")
 public class CityMetricRestService {
+	/**
+	 * Process the City ID GET Request
+	 * Use {@link com.jallen.impl.IdValidationService#validateId(String)} to validate input weights.
+	 * Use {@link com.jallen.utils.CityMetricUtils#buildCityResponse(int, CityResponse)} to find the city.
+	 * @param inputCityId The entered city code
+	 * @return            Returns the response status and object
+	 */
 	@GET
     @Path("city/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
     public Response processCityId(@PathParam("id") String inputCityId) {
 		Status status = Response.Status.OK;
-		int cityId = Integer.parseInt(inputCityId);
+		int cityId = 0;
 		CityResponse response = new CityResponse();
-		
 		try {
-			IdValidationService.ValidateId(cityId, response);
+			cityId = IdValidationService.validateId(inputCityId);
 			CityMetricUtils.buildCityResponse(cityId, response);
 		} catch (CMAppException e) {
 			status = Response.Status.BAD_REQUEST;
@@ -47,22 +57,29 @@ public class CityMetricRestService {
 		return Response.status(status).entity(response).build();
     }
 	
+	/**
+	 * Process the City Rank POST Request
+	 * Use {@link com.jallen.impl.WeightValidationService#validateWeights(RankRequest)} to validate input weights.
+	 * Use {@link com.jallen.utils.CityMetricUtils#buildRankResponse(RankRequest, List&lt;RankResponse&gt;)} to build the city list.
+	 * @param input The input stream of the Json Request
+	 * @return      Return the response status and object
+	 */
 	@POST
     @Path("rank")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-    public Response process(InputStream entity) {
+    public Response process(InputStream input) {
 		Status status = Response.Status.OK;
 		RankRequest request = new RankRequest();
 		List<RankResponse> response = new ArrayList<RankResponse>();
 		try {
 			try {
 				ObjectMapper mapper = new ObjectMapper();
-				request = mapper.readValue(entity, RankRequest.class);
+				request = mapper.readValue(input, RankRequest.class);
 			} catch (IOException e) {
 				throw new CMAppException("Invalid Json Request");
 			}
-			WeightValidationService.ValidateWeights(request);
+			WeightValidationService.validateWeights(request);
 			CityMetricUtils.buildRankResponse(request, response);
 		} catch (CMAppException e) {
 			status = Response.Status.BAD_REQUEST;

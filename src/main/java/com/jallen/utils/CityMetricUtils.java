@@ -16,12 +16,23 @@ import com.jallen.model.MetricContents;
 import com.jallen.model.RankRequest;
 import com.jallen.model.RankResponse;
 
+/**
+ * Use inputs to build response objects
+ * @author Jonathan Allen
+ */
 public class CityMetricUtils {
+	/**
+	 * Build the city response by finding the city that matches the input id
+	 * Use {@link #getCitiesList()} to read the cities from the database file
+	 * Use {@link #copyDbToResponse(CityResponse, CityResponse)} to copy the found city data to the response
+	 * @param cityId          The entered city id
+	 * @param response        Object to hold response data
+	 * @throws IOException    Thrown when there is an error reading the database
+	 * @throws CMAppException Thrown when the city id is not found in the database
+	 */
 	public static void buildCityResponse(int cityId, CityResponse response) throws IOException, CMAppException {
 		boolean cityFound = false;
 		try {
-			/* This would be replaced with a database call making the database do the work of finding
-			the object with the matching id */
 			List<CityResponse> cityData = getCitiesList();
 			for(CityResponse dbResponse : cityData) {
 				if(cityId == Integer.parseInt(dbResponse.getCityId())) {
@@ -38,6 +49,14 @@ public class CityMetricUtils {
 		return;
 	}
 	
+	/**
+	 * Build the city list response by calculating sorting the overall score
+	 * Use {@link #getCitiesList()} to read the cities from the database file
+	 * Use {@link #copyDbToResponse(CityResponse, CityResponse)} to copy the found city data to the response
+	 * @param request      The request holding the user entered weight data
+	 * @param response     The list of cities to return to the user
+	 * @throws IOException Thrown when there is an error reading the database
+	 */
 	public static void buildRankResponse(RankRequest request, List<RankResponse> response) throws IOException {
 		try {
 			List<CityResponse> cityData = getCitiesList();
@@ -58,6 +77,11 @@ public class CityMetricUtils {
 		return;
 	}
 	
+	/**
+	 * Read the list of cities in from the cities.json file
+	 * @return             The list of cities
+	 * @throws IOException Thrown when there is an error reading the database
+	 */
 	public static List<CityResponse> getCitiesList() throws IOException {		
 		ObjectMapper mapper = new ObjectMapper();
 		InputStream databaseStream = CityMetricUtils.class.getResourceAsStream("/cities.json");
@@ -69,6 +93,11 @@ public class CityMetricUtils {
 		return cityData;
 	}
 	
+	/**
+	 * Copy the database response to the response object
+	 * @param response   The object to return to the user
+	 * @param dbResponse The database response object
+	 */
 	public static void copyDbToResponse (CityResponse response, CityResponse dbResponse) {
 		response.setMetricContents(new MetricContents());
 		response.setCityId(dbResponse.getCityId());
@@ -77,6 +106,11 @@ public class CityMetricUtils {
 		return;
 	}
 	
+	/**
+	 * Calculate the overall score using the metric data and entered weights
+	 * @param weights  The weights entered by the user
+	 * @param response The response object to get the metric data from
+	 */
 	public static void calculateOverallScore(RankRequest weights, RankResponse response) {
 		response.setCalculatedScore((float) (Math.round(((weights.getMetricContents().getGreenSpace() * response.getMetricContents().getGreenSpace()) +
 				(weights.getMetricContents().getJobGrowth() * response.getMetricContents().getJobGrowth()) +
