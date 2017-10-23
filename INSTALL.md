@@ -9,6 +9,8 @@
 2. Enter "java - version"
 3. Should be 1.8, if not, please update
 4. Enter "echo $JAVA_HOME", should point to the 1.8 jdk
+5. If it doesn't, enter "export JAVA_HOME=$(/usr/libexec/java_home)"
+6. Try "echo $JAVA_HOME" again
 
 ---
 
