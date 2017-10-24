@@ -46,6 +46,8 @@ OS name: "mac os x", version: "10.12.6", arch: "x86_64", family: "mac"
 7. In the command line in "apache-tomcat-8.5.23/bin" run "./startup.sh"
 8. Tomcat should startup, and the service should be running on http://localhost:8080
 
+Note: I have added the compiled war file in the "Compiled War" folder
+
 ## Sample Requests
 I used Postman to send these
 
